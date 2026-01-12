@@ -1,12 +1,19 @@
-# Symbol Clipboard
+# QuickSymbol
 
-A clean, fast web app for searching and copying math symbols and Greek letters to your clipboard.
+A clean, fast web app for searching and copying math symbols, Greek letters, and emojis to your clipboard.
+
+🔗 **Live App**: [https://quick-symbol.vercel.app/](https://quick-symbol.vercel.app/)
 
 ## Features
 
-- **Comprehensive Symbol Database**: 250+ math symbols, Greek letters, arrows, operators, and more
-- **Instant Search**: Search by name (e.g., "alpha", "arrow left", "infinity")
-- **One-Click Copy**: Click any symbol to instantly copy it to your clipboard
+- **Comprehensive Database**:
+  - 250+ math symbols, Greek letters, arrows, operators, and more
+  - 900+ emojis across all categories (smileys, animals, food, travel, objects, etc.)
+- **Tabbed Interface**: Switch between Symbols and Emojis with a single click
+- **Instant Search**: Search by name in either tab
+  - Symbols: "alpha", "arrow left", "infinity", "integral"
+  - Emojis: "smile", "heart", "fire", "thumbs up", "pizza"
+- **One-Click Copy**: Click any symbol or emoji to instantly copy it to your clipboard
 - **Dark Mode**: Easy on the eyes with a clean dark interface
 - **PWA Support**: Install as a Progressive Web App for offline access
 - **Keyboard Shortcuts**:
@@ -51,8 +58,9 @@ This is a static web app that can be deployed to any hosting service:
 CopyToClipboard/
 ├── index.html          # Main HTML file
 ├── styles.css          # Dark mode styling
-├── app.js             # Main application logic
-├── symbols.js         # Symbol database
+├── app.js             # Main application logic with tab switching
+├── symbols.js         # Math symbols & Greek letters database (250+ items)
+├── emojis.js          # Emoji database (900+ items)
 ├── manifest.json      # PWA manifest
 ├── service-worker.js  # Service worker for offline support
 ├── icon-192.png       # App icon (192x192)
@@ -62,12 +70,16 @@ CopyToClipboard/
 
 ## Customization
 
-### Adding More Symbols
+### Adding More Symbols or Emojis
 
-Edit `symbols.js` and add entries to the `symbols` array:
+Edit `symbols.js` or `emojis.js` and add entries to their respective arrays:
 
 ```javascript
+// In symbols.js
 { symbol: '∞', names: ['infinity', 'infinite'] }
+
+// In emojis.js
+{ symbol: '🚀', names: ['rocket', 'space', 'launch'] }
 ```
 
 ### Changing Colors

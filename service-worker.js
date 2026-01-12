@@ -1,4 +1,4 @@
-const CACHE_NAME = 'symbol-clipboard-v1';
+const CACHE_NAME = 'quicksymbol-v1';
 const urlsToCache = [
   './',
   './index.html',
