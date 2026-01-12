@@ -1,7 +1,7 @@
 <svg width="512" height="512" xmlns="http://www.w3.org/2000/svg">
   <rect width="512" height="512" rx="85" fill="#1a1a1a"/>
   <!-- Clipboard icon -->
-  <g transform="translate(256, 256) scale(1.4)">
+  <g transform="translate(267, 267) scale(1.4)">
     <!-- Back clipboard -->
     <rect x="-67" y="-80" width="134" height="160" rx="16" fill="#e0e0e0" opacity="0.3"/>
     <!-- Front clipboard -->
