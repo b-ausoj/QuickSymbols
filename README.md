@@ -2,7 +2,7 @@
 
 A simple web app for quickly copying math symbols and emojis to your clipboard.
 
-🔗 **Live App**: [https://quick-symbol.vercel.app/](https://quick-symbol.vercel.app/)
+🔗 **Live App**: [https://quick-symbols.vercel.app/](https://quick-symbols.vercel.app/)
 
 ## About
 
