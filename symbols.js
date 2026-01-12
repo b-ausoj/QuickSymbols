@@ -151,6 +151,7 @@ const symbols = [
     { symbol: 'ℂ', names: ['complex numbers', 'complex'] },
     { symbol: 'ℙ', names: ['prime numbers', 'primes'] },
     { symbol: 'ℍ', names: ['quaternions'] },
+    { symbol: '𝒩', names: ['script N', 'normal distribution', 'script capital N'] },
 
     // Geometry
     { symbol: '°', names: ['degree', 'degrees'] },
@@ -171,6 +172,7 @@ const symbols = [
     { symbol: '!', names: ['factorial', 'exclamation'] },
     { symbol: '‰', names: ['per mille', 'per thousand'] },
     { symbol: '%', names: ['percent', 'percentage'] },
+    { symbol: '~', names: ['tilde', 'approximately', 'similar'] },
     { symbol: '∴', names: ['therefore'] },
     { symbol: '∵', names: ['because', 'since'] },
     { symbol: '⋯', names: ['ellipsis', 'dots', 'horizontal dots'] },
