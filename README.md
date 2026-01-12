@@ -1,4 +1,4 @@
-# QuickSymbol
+# QuickSymbols
 
 A clean, fast web app for searching and copying math symbols, Greek letters, and emojis to your clipboard.
 

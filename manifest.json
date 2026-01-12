@@ -1,6 +1,6 @@
 {
-  "name": "QuickSymbol - Math Symbols, Greek Letters & Emojis",
-  "short_name": "QuickSymbol",
+  "name": "QuickSymbols - Math Symbols, Greek Letters & Emojis",
+  "short_name": "QuickSymbols",
   "description": "Easily search and copy math symbols, Greek letters, and emojis to clipboard",
   "start_url": "./index.html",
   "display": "standalone",
