@@ -200,7 +200,7 @@ const symbols = [
     { symbol: '𝕎', names: ['double-struck W', 'blackboard bold W', 'doublestruck W'] },
     { symbol: '𝕏', names: ['double-struck X', 'blackboard bold X', 'doublestruck X'] },
     { symbol: '𝕐', names: ['double-struck Y', 'blackboard bold Y', 'doublestruck Y'] },
-    { symbol: '𝕑', names: ['double-struck Z', 'blackboard bold Z', 'doublestruck Z'] },
+    { symbol: 'ℤ', names: ['double-struck Z', 'blackboard bold Z', 'doublestruck Z'] },
 
     // Double-Struck Digits
     { symbol: '𝟘', names: ['double-struck 0', 'blackboard bold 0', 'doublestruck 0'] },
