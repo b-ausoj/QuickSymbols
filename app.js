@@ -34,6 +34,15 @@ function setupEventListeners() {
             switchTab(tab);
         });
     });
+
+    // Event delegation for symbol cards - single listener for all cards
+    symbolGrid.addEventListener('click', (e) => {
+        const card = e.target.closest('.symbol-card');
+        if (card) {
+            const symbol = card.getAttribute('data-symbol');
+            copyToClipboard(symbol, card);
+        }
+    });
 }
 
 // Switch between tabs
@@ -107,14 +116,6 @@ function renderItems(itemsToRender) {
             </div>
         `;
     }).join('');
-
-    // Add click listeners to all cards
-    document.querySelectorAll('.symbol-card').forEach(card => {
-        card.addEventListener('click', () => {
-            const symbol = card.getAttribute('data-symbol');
-            copyToClipboard(symbol, card);
-        });
-    });
 }
 
 // Copy to clipboard
