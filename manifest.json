@@ -1,7 +1,7 @@
 {
-  "name": "Symbol Clipboard - Math Symbols & Greek Letters",
+  "name": "Symbol Clipboard - Math Symbols, Greek Letters & Emojis",
   "short_name": "Symbol Clipboard",
-  "description": "Easily search and copy math symbols and Greek letters to clipboard",
+  "description": "Easily search and copy math symbols, Greek letters, and emojis to clipboard",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#1a1a1a",

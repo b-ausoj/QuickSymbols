@@ -1,15 +1,24 @@
 // App state
-let filteredSymbols = [...symbols];
+let currentTab = 'symbols';
+let currentDataset = symbols;
+let filteredItems = [...symbols];
 
 // DOM elements
 const searchInput = document.getElementById('searchInput');
 const symbolGrid = document.getElementById('symbolGrid');
 const toast = document.getElementById('toast');
 const resultsCount = document.getElementById('resultsCount');
+const tabButtons = document.querySelectorAll('.tab-button');
+
+// Placeholder text based on tab
+const placeholders = {
+    symbols: 'Search for symbols (e.g., arrow left, gamma, infinity)...',
+    emojis: 'Search for emojis (e.g., smile, heart, fire, thumbs up)...'
+};
 
 // Initialize app
 function init() {
-    renderSymbols(filteredSymbols);
+    renderItems(filteredItems);
     setupEventListeners();
     registerServiceWorker();
 }
@@ -17,6 +26,39 @@ function init() {
 // Setup event listeners
 function setupEventListeners() {
     searchInput.addEventListener('input', handleSearch);
+
+    // Tab switching
+    tabButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const tab = button.getAttribute('data-tab');
+            switchTab(tab);
+        });
+    });
+}
+
+// Switch between tabs
+function switchTab(tab) {
+    currentTab = tab;
+
+    // Update active tab button
+    tabButtons.forEach(btn => {
+        if (btn.getAttribute('data-tab') === tab) {
+            btn.classList.add('active');
+        } else {
+            btn.classList.remove('active');
+        }
+    });
+
+    // Update dataset
+    currentDataset = tab === 'symbols' ? symbols : emojis;
+
+    // Update placeholder
+    searchInput.placeholder = placeholders[tab];
+
+    // Clear search and show all items
+    searchInput.value = '';
+    filteredItems = [...currentDataset];
+    renderItems(filteredItems);
 }
 
 // Handle search input
@@ -24,20 +66,23 @@ function handleSearch(e) {
     const query = e.target.value.toLowerCase().trim();
 
     if (query === '') {
-        filteredSymbols = [...symbols];
+        filteredItems = [...currentDataset];
     } else {
-        filteredSymbols = symbols.filter(item => {
+        filteredItems = currentDataset.filter(item => {
             return item.names.some(name => name.toLowerCase().includes(query));
         });
     }
 
-    renderSymbols(filteredSymbols);
+    renderItems(filteredItems);
 }
 
-// Render symbols to grid
-function renderSymbols(symbolsToRender) {
-    if (symbolsToRender.length === 0) {
-        symbolGrid.innerHTML = '<div class="no-results">No symbols found. Try a different search term.</div>';
+// Render items to grid
+function renderItems(itemsToRender) {
+    const itemType = currentTab === 'symbols' ? 'symbol' : 'emoji';
+    const itemTypePlural = itemType + 's';
+
+    if (itemsToRender.length === 0) {
+        symbolGrid.innerHTML = `<div class="no-results">No ${itemTypePlural} found. Try a different search term.</div>`;
         resultsCount.textContent = '';
         return;
     }
@@ -45,12 +90,12 @@ function renderSymbols(symbolsToRender) {
     // Update results count
     const query = searchInput.value.trim();
     if (query) {
-        resultsCount.textContent = `Found ${symbolsToRender.length} symbol${symbolsToRender.length !== 1 ? 's' : ''}`;
+        resultsCount.textContent = `Found ${itemsToRender.length} ${itemsToRender.length !== 1 ? itemTypePlural : itemType}`;
     } else {
-        resultsCount.textContent = `${symbolsToRender.length} symbols available`;
+        resultsCount.textContent = `${itemsToRender.length} ${itemTypePlural} available`;
     }
 
-    symbolGrid.innerHTML = symbolsToRender.map(item => {
+    symbolGrid.innerHTML = itemsToRender.map(item => {
         const primaryName = item.names[0];
         const altNames = item.names.slice(1).join(', ');
 
@@ -63,7 +108,7 @@ function renderSymbols(symbolsToRender) {
         `;
     }).join('');
 
-    // Add click listeners to all symbol cards
+    // Add click listeners to all cards
     document.querySelectorAll('.symbol-card').forEach(card => {
         card.addEventListener('click', () => {
             const symbol = card.getAttribute('data-symbol');

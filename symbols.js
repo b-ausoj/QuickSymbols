@@ -251,11 +251,21 @@ const symbols = [
     { symbol: '©', names: ['copyright'] },
     { symbol: '®', names: ['registered', 'registered trademark'] },
     { symbol: '™', names: ['trademark'] },
-    { symbol: '…', names: ['ellipsis', 'three dots'] },
     { symbol: '–', names: ['en dash', 'dash'] },
     { symbol: '—', names: ['em dash', 'long dash'] },
     { symbol: '\'', names: ['left single quote', 'single quote'] },
     { symbol: '\'', names: ['right single quote', 'single quote'] },
     { symbol: '"', names: ['left double quote', 'double quote'] },
     { symbol: '"', names: ['right double quote', 'double quote'] },
+
+    // Three dots and ellipsis variations
+    { symbol: '…', names: ['ellipsis', 'three dots', 'horizontal ellipsis', 'dot dot dot'] },
+    { symbol: '⋯', names: ['midline horizontal ellipsis', 'three dots', 'centered dots'] },
+    { symbol: '⋮', names: ['vertical ellipsis', 'three dots vertical', 'vertical three dots'] },
+    { symbol: '⋰', names: ['up right diagonal ellipsis', 'three dots diagonal', 'ascending dots'] },
+    { symbol: '⋱', names: ['down right diagonal ellipsis', 'three dots diagonal', 'descending dots'] },
+    { symbol: '︙', names: ['vertical ellipsis presentation', 'three dots vertical', 'vertical menu'] },
+    { symbol: '⁝', names: ['tricolon', 'three dots vertical'] },
+    { symbol: '⸬', names: ['double comma', 'two dots'] },
+    { symbol: '⸭', names: ['triple comma', 'three commas'] },
 ];

@@ -4,18 +4,29 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="theme-color" content="#1a1a1a">
-    <meta name="description" content="Easily search and copy math symbols and Greek letters to clipboard">
-    <title>Symbol Clipboard - Math Symbols & Greek Letters</title>
+    <meta name="description" content="Easily search and copy math symbols, Greek letters, and emojis to clipboard">
+    <title>Symbol Clipboard - Math Symbols, Greek Letters & Emojis</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
     <link rel="icon" type="image/png" href="icon-192.png">
+
+    <!-- Vercel Analytics -->
+    <script>
+        window.va = window.va || function () { (window.vaq = window.vaq || []).push(arguments); };
+    </script>
+    <script defer src="/_vercel/insights/script.js"></script>
 </head>
 <body>
     <div class="container">
         <header>
             <h1>Symbol Clipboard</h1>
-            <p class="subtitle">Search and copy math symbols & Greek letters</p>
+            <p class="subtitle">Search and copy symbols, emojis & more</p>
         </header>
+
+        <div class="tab-container">
+            <button class="tab-button active" data-tab="symbols">Symbols</button>
+            <button class="tab-button" data-tab="emojis">Emojis</button>
+        </div>
 
         <div class="search-container">
             <input
@@ -36,6 +47,7 @@
     </div>
 
     <script src="symbols.js"></script>
+    <script src="emojis.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
