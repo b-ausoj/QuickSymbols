@@ -374,6 +374,7 @@ const symbols = [
     { symbol: '★', names: ['star', 'filled star'] },
     { symbol: '☆', names: ['star outline', 'empty star'] },
     { symbol: '•', names: ['bullet', 'dot'] },
+    { symbol: '⋅', names: ['dot operator', 'multiplication dot'] },
     { symbol: '◦', names: ['circle bullet', 'white bullet'] },
     { symbol: '§', names: ['section', 'section sign'] },
     { symbol: '¶', names: ['paragraph', 'pilcrow'] },
