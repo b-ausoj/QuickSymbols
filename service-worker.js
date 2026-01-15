@@ -1,4 +1,4 @@
-const CACHE_NAME = 'quicksymbols-v3';
+const CACHE_NAME = 'quicksymbols-v3.1';
 const urlsToCache = [
   './',
   './index.html',
