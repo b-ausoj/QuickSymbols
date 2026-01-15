@@ -75,20 +75,66 @@ function handleSearch(e) {
     const query = e.target.value.toLowerCase().trim();
 
     if (query === '') {
+        // Show all cards
+        const allCards = symbolGrid.querySelectorAll('.symbol-card');
+        allCards.forEach(card => card.classList.remove('hidden'));
         filteredItems = [...currentDataset];
     } else {
         // Split query into individual words
         const searchWords = query.split(/\s+/);
 
-        filteredItems = currentDataset.filter(item => {
-            // All search words must match at least one name
-            return searchWords.every(searchWord =>
+        // Filter and update visibility
+        filteredItems = [];
+        const allCards = symbolGrid.querySelectorAll('.symbol-card');
+
+        allCards.forEach((card, index) => {
+            const item = currentDataset[index];
+            const matches = searchWords.every(searchWord =>
                 item.names.some(name => name.toLowerCase().includes(searchWord))
             );
+
+            if (matches) {
+                card.classList.remove('hidden');
+                filteredItems.push(item);
+            } else {
+                card.classList.add('hidden');
+            }
         });
     }
 
-    renderItems(filteredItems);
+    updateResultsCount();
+}
+
+// Update results count display
+function updateResultsCount() {
+    const itemType = currentTab === 'symbols' ? 'symbol' : 'emoji';
+    const itemTypePlural = itemType + 's';
+    const query = searchInput.value.trim();
+
+    // Handle no results case
+    let noResultsDiv = symbolGrid.querySelector('.no-results');
+
+    if (filteredItems.length === 0) {
+        if (!noResultsDiv) {
+            noResultsDiv = document.createElement('div');
+            noResultsDiv.className = 'no-results';
+            noResultsDiv.textContent = `No ${itemTypePlural} found. Try a different search term.`;
+            symbolGrid.appendChild(noResultsDiv);
+        }
+        resultsCount.textContent = '';
+    } else {
+        // Remove no results message if it exists
+        if (noResultsDiv) {
+            noResultsDiv.remove();
+        }
+
+        // Update count
+        if (query) {
+            resultsCount.textContent = `Found ${filteredItems.length} ${filteredItems.length !== 1 ? itemTypePlural : itemType}`;
+        } else {
+            resultsCount.textContent = `${filteredItems.length} ${itemTypePlural} available`;
+        }
+    }
 }
 
 // Render items to grid

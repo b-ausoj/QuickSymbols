@@ -329,6 +329,10 @@ header h1 {
     animation: fadeIn 0.3s ease;
 }
 
+.symbol-card.hidden {
+    display: none;
+}
+
 /* Print styles */
 @media print {
     body {
