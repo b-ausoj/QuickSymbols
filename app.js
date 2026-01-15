@@ -77,8 +77,14 @@ function handleSearch(e) {
     if (query === '') {
         filteredItems = [...currentDataset];
     } else {
+        // Split query into individual words
+        const searchWords = query.split(/\s+/);
+
         filteredItems = currentDataset.filter(item => {
-            return item.names.some(name => name.toLowerCase().includes(query));
+            // All search words must match at least one name
+            return searchWords.every(searchWord =>
+                item.names.some(name => name.toLowerCase().includes(searchWord))
+            );
         });
     }
 
