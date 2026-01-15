@@ -233,10 +233,11 @@ function registerServiceWorker() {
 
 // Keyboard shortcuts
 document.addEventListener('keydown', (e) => {
-    // Focus search on '/' key
+    // Focus search on '/' key and select all text
     if (e.key === '/' && document.activeElement !== searchInput) {
         e.preventDefault();
         searchInput.focus();
+        searchInput.select();
     }
 
     // Clear search on Escape
