@@ -66,8 +66,21 @@ function switchTab(tab) {
 
     // Clear search and show all items
     searchInput.value = '';
-    filteredItems = [...currentDataset];
-    renderItems(filteredItems);
+
+    if (tab === 'writing') {
+        document.querySelector('.search-container').classList.add('hidden');
+        document.getElementById('symbolGrid').classList.add('hidden');
+        document.getElementById('resultsCount').classList.add('hidden');
+        document.getElementById('writingContainer').classList.remove('hidden');
+    } else {
+        document.querySelector('.search-container').classList.remove('hidden');
+        document.getElementById('symbolGrid').classList.remove('hidden');
+        document.getElementById('resultsCount').classList.remove('hidden');
+        document.getElementById('writingContainer').classList.add('hidden');
+
+        filteredItems = [...currentDataset];
+        renderItems(filteredItems);
+    }
 }
 
 // Handle search input
@@ -252,4 +265,33 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', init);
 } else {
     init();
+}
+
+// Transform text based on style
+window.transformText = function (style) {
+    const input = document.getElementById(`input-${style}`);
+    const output = document.getElementById(`output-${style}`);
+    const text = input.value;
+    const mapping = writingStyles[style]; // Assumes writingStyles is loaded globally
+
+    if (!mapping) return;
+
+    const transformed = text.split('').map(char => {
+        return mapping[char] || char;
+    }).join('');
+
+    output.textContent = transformed;
+}
+
+// Copy specific style result
+window.copyStyle = function (style, btnElement) {
+    const output = document.getElementById(`output-${style}`);
+    const text = output.textContent;
+
+    // Animate the card to match existing behavior
+    const card = btnElement.closest('.style-card');
+
+    if (text) {
+        copyToClipboard(text, card || btnElement);
+    }
 }
